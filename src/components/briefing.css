@@ -1,0 +1,167 @@
+/* Cartel de instrucciones previo al vuelo.
+   Misma estética que el cartel de felicitaciones (.jugar__tarjeta), pero sin animaciones. */
+
+.briefing {
+  position: fixed;
+  inset: 0;
+  z-index: 10;
+  display: flex;
+  padding: 24px;
+  overflow-y: auto;
+  background: rgba(16, 20, 21, 0.85);
+}
+
+.briefing__tarjeta {
+  /* margin: auto centra la tarjeta y, si la pantalla es baja, deja scrollear */
+  margin: auto;
+  width: 100%;
+  max-width: 640px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+  padding: 40px 48px;
+  background: #1b0088;
+  color: #fff;
+  border-radius: 20px;
+  text-align: center;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+}
+
+.briefing__sello {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 13px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #7ec8f2;
+}
+
+.briefing__titulo {
+  font-family: 'Sora', sans-serif;
+  font-size: 40px;
+  margin: 0;
+}
+
+.briefing__texto {
+  font-family: 'Hanken Grotesk', sans-serif;
+  font-size: 20px;
+  line-height: 1.4;
+  margin: 0;
+}
+
+/* Dificultad y meta */
+.briefing__stats {
+  display: flex;
+  gap: 40px;
+  margin: 6px 0;
+}
+
+.briefing__stats div {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.briefing__stats > div > span {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 12px;
+  text-transform: uppercase;
+  opacity: 0.7;
+}
+
+.briefing__stats strong {
+  font-family: 'Sora', sans-serif;
+  font-size: 28px;
+}
+
+.briefing__estrellas {
+  font-size: 24px;
+  letter-spacing: 3px;
+  color: #eb0045;
+}
+
+.briefing__estrellas .briefing__estrella--vacia {
+  color: rgba(255, 255, 255, 0.25);
+  opacity: 1;
+}
+
+/* Los 3 pasos (solo en el primer nivel) */
+.briefing__pasos {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+  width: 100%;
+  margin: 6px 0;
+}
+
+.briefing__paso {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  padding: 16px 12px;
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 16px;
+}
+
+.briefing__numero {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: #eb0045;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.briefing__paso strong {
+  font-family: 'Sora', sans-serif;
+  font-size: 20px;
+}
+
+.briefing__paso p {
+  margin: 0;
+  font-family: 'Hanken Grotesk', sans-serif;
+  font-size: 14px;
+  line-height: 1.4;
+  opacity: 0.85;
+}
+
+/* Avisos y consejos */
+.briefing__consejo {
+  width: 100%;
+  margin: 0;
+  padding: 10px 16px;
+  font-family: 'Hanken Grotesk', sans-serif;
+  font-size: 16px;
+  line-height: 1.4;
+  background: rgba(255, 255, 255, 0.12);
+  border-radius: 16px;
+}
+
+.briefing__ayuda {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 12px;
+  opacity: 0.7;
+}
+
+@media (max-width: 640px) {
+  .briefing__tarjeta {
+    padding: 28px 20px;
+  }
+
+  .briefing__titulo {
+    font-size: 30px;
+  }
+
+  .briefing__pasos {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .briefing__stats {
+    gap: 24px;
+  }
+}

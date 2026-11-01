@@ -1,0 +1,832 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: system-ui, sans-serif;
+  background: #0f1115;
+}
+
+/* ===== Login ===== */
+.login {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: url('imagenes/fondo-avion.png') center/cover no-repeat;
+}
+
+.login__card {
+  background: rgba(20, 20, 25, 0.55);
+  backdrop-filter: blur(6px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 20px;
+  padding: 40px 32px;
+  width: 320px;
+  text-align: center;
+  color: white;
+}
+.login__logo {
+  width: 250px;
+  
+  filter:
+    drop-shadow(0 0 10px rgba(255, 255, 255, 0.45))
+    drop-shadow(0 0 28px rgba(255, 255, 255, 0.35))
+    drop-shadow(0 0 50px rgba(255, 255, 255, 0.25));
+}
+.login__titulo {
+  margin: 0 0 24px 0;
+  font-size: 28px;
+  font-weight: 800;
+  color: #f4f6f8;
+}
+
+.login__label {
+  display: block;
+  text-align: left;
+  font-size: 11px;
+  letter-spacing: 1px;
+  color: #ccc;
+  margin-bottom: 6px;
+  text-transform: uppercase;
+}
+
+.login__input {
+  width: 100%;
+  padding: 10px 12px;
+  margin-bottom: 20px;
+  border-radius: 8px;
+  border: none;
+  background: rgba(0, 0, 0, 0.4);
+  color: white;
+  font-size: 14px;
+}
+
+.login__input::placeholder {
+  color: #888;
+}
+
+.login__boton {
+  width: 100%;
+  padding: 14px;
+  border: none;
+  border-radius: 999px;
+  background: #e0335b;
+  color: #1a1a2e;
+  font-weight: 700;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.login__boton:hover {
+  opacity: 0.9;
+}
+
+/* ===== Layout general con sidebar ===== */
+.app-layout {
+  display: flex;
+  min-height: 100vh;
+}
+
+/* ===== Sidebar ===== */
+.sidebar {
+  width: 230px;
+  background: #12141c;
+  color: white;
+  padding: 32px 20px;
+  flex-shrink: 0;
+}
+
+.sidebar__perfil {
+  text-align: center;
+  margin-bottom: 32px;
+}
+
+.sidebar__avatar {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background: #b8b8b8;
+  margin: 0 auto 12px;
+}
+
+.sidebar__nombre {
+  margin: 0;
+  font-size: 20px;
+  color: white;
+}
+
+.sidebar__tier {
+  margin: 4px 0 0;
+  font-size: 12px;
+  color: #e0335b;
+  font-weight: 700;
+}
+
+.sidebar__nav ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.sidebar__nav li {
+  padding: 12px 10px;
+  font-size: 14px;
+  color: #aaa;
+  cursor: pointer;
+  border-left: 3px solid transparent;
+}
+
+.sidebar__nav li.activo {
+  color: white;
+  background: rgba(255, 255, 255, 0.06);
+  border-left: 3px solid #4a90e2;
+}
+
+.sidebar__nav a {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* ===== Destinos ===== */
+.destinos {
+  flex: 1;
+  min-width: 0;
+  padding: 40px;
+  color: white;
+  background:
+    linear-gradient(rgba(15, 17, 21, 0.45), rgba(15, 17, 21, 0.7)),
+    url('/imagenes/earth.jpg') center/cover no-repeat;
+}
+
+.destinos__etiqueta {
+  margin: 0 0 8px;
+  font-family: monospace;
+  font-size: 12px;
+  letter-spacing: 3px;
+  color: #ff0a54;
+}
+
+.destinos__titulo {
+  margin: 0;
+  font-size: 48px;
+  line-height: 1.1;
+  color: white;
+  text-shadow: 0 2px 12px rgba(0, 0, 0, 0.6);
+}
+
+.destinos__subtitulo {
+  margin: 8px 0 32px;
+  font-size: 16px;
+  color: #d0d3dc;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.6);
+}
+
+/* Grid: se acomoda solo según el ancho de la pantalla */
+.destinos__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+  gap: 24px;
+}
+
+.destino-card-link {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* Cards */
+.destino-card {
+  position: relative;
+  height: 280px;
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 16px;
+  overflow: hidden;
+  cursor: pointer;
+  transition: transform 0.2s, border-color 0.2s, box-shadow 0.2s;
+}
+
+.destino-card:hover {
+  transform: translateY(-6px);
+  border-color: #ff0a54;
+  box-shadow: 0 12px 32px rgba(255, 10, 84, 0.25);
+}
+
+.destino-card__imagen {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.4s;
+}
+
+.destino-card:hover .destino-card__imagen {
+  transform: scale(1.08);
+}
+
+/* Texto encima de la foto, sin fondo blanco */
+.destino-card__info {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  padding: 40px 18px 16px;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.85), transparent);
+}
+
+.destino-card__info h3 {
+  margin: 0;
+  font-size: 20px;
+  color: white;
+  text-shadow: 0 2px 6px rgba(0, 0, 0, 0.6);
+}
+
+.destino-card__candado {
+  display: block;
+  margin-top: 6px;
+  font-family: monospace;
+  font-size: 12px;
+  color: #d0d3dc;
+}
+
+/* Cards bloqueadas */
+.destino-card--bloqueado {
+  cursor: not-allowed;
+}
+
+.destino-card--bloqueado:hover {
+  transform: none;
+  border-color: rgba(255, 255, 255, 0.15);
+  box-shadow: none;
+}
+
+.destino-card--bloqueado:hover .destino-card__imagen {
+  transform: none;
+}
+
+.destino-card--bloqueado .destino-card__imagen {
+  filter: grayscale(1) brightness(0.6);
+}
+
+.destino-card--bloqueado .destino-card__info h3 {
+  color: #9a9eab;
+}
+
+/* ===== Detalle de destino ===== */
+.destino-detalle {
+  --dd-fondo: #0f1115;
+  --dd-tarjeta: #171922;
+  --dd-borde: rgba(255, 255, 255, 0.08);
+  --dd-acento: #ff0a54;
+  --dd-violeta: #6d5dfc;
+  --dd-texto: #e8e9ee;
+  --dd-texto-suave: #a3a7b5;
+
+  flex: 1;
+  min-width: 0;
+  text-align: left;
+  background:
+    radial-gradient(circle at top right, rgba(109, 93, 252, 0.15), transparent 50%),
+    var(--dd-fondo);
+  color: var(--dd-texto);
+  padding-bottom: 64px;
+}
+
+/* ----- Portada ----- */
+.destino-detalle__hero {
+  position: relative;
+  min-height: 480px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 48px 64px;
+  background-size: cover;
+  background-position: center;
+}
+
+/* Capa oscura: arriba suave, abajo se funde con el fondo */
+.destino-detalle__hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    rgba(15, 17, 21, 0.55) 0%,
+    rgba(15, 17, 21, 0.1) 35%,
+    var(--dd-fondo) 100%
+  );
+}
+
+.destino-detalle__hero > * {
+  position: relative;
+}
+
+/* Botón "Volver" flotando arriba a la izquierda */
+.destino-detalle__hero > .destino-detalle__volver {
+  position: absolute;
+  top: 28px;
+  left: 64px;
+  padding: 8px 16px;
+  border-radius: 999px;
+  background: rgba(15, 17, 21, 0.55);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(8px);
+  color: white;
+  font-size: 14px;
+  text-decoration: none;
+  transition: background 0.2s;
+}
+
+.destino-detalle__volver:hover {
+  background: rgba(255, 10, 84, 0.6);
+}
+
+.destino-detalle__etiquetas {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+.destino-detalle__estado,
+.destino-detalle__xp {
+  padding: 8px 16px;
+  border-radius: 999px;
+  font-family: monospace;
+  font-size: 13px;
+  backdrop-filter: blur(8px);
+}
+
+.destino-detalle__estado {
+  background: rgba(15, 17, 21, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.destino-detalle__estado::before {
+  content: '● ';
+  color: var(--dd-acento);
+}
+
+.destino-detalle__xp {
+  background: rgba(109, 93, 252, 0.25);
+  border: 1px solid var(--dd-violeta);
+  color: #cfc9ff;
+}
+
+.destino-detalle__titulo {
+  margin: 0;
+  font-size: 72px;
+  line-height: 1.05;
+  letter-spacing: -1px;
+  color: white;
+  text-shadow: 0 4px 24px rgba(0, 0, 0, 0.5);
+}
+
+.destino-detalle__ubicacion {
+  margin: 12px 0 0;
+  color: #d0d3dc;
+  font-size: 20px;
+  text-shadow: 0 2px 12px rgba(0, 0, 0, 0.5);
+}
+
+/* ----- Contenido en dos columnas ----- */
+.destino-detalle__contenido {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 360px;
+  gap: 40px;
+  padding: 16px 64px 0;
+}
+
+.destino-detalle__principal,
+.destino-detalle__lateral {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  min-width: 0;
+}
+
+/* La columna lateral te acompaña al scrollear */
+.destino-detalle__lateral {
+  position: sticky;
+  top: 24px;
+  align-self: start;
+}
+
+/* ----- Tarjetas ----- */
+.destino-detalle__datos,
+.destino-detalle__descripcion,
+.destino-detalle__ruta,
+.destino-detalle__sabias,
+.destino-detalle__puntos {
+  background: var(--dd-tarjeta);
+  border: 1px solid var(--dd-borde);
+  border-radius: 20px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.25);
+}
+
+/* Datos: elevación, pista, hora, clima */
+.destino-detalle__datos {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  padding: 24px 28px;
+}
+
+.destino-detalle__datos div {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+/* Línea separadora entre cada dato */
+.destino-detalle__datos div + div {
+  padding-left: 20px;
+  border-left: 1px solid var(--dd-borde);
+}
+
+.destino-detalle__datos span {
+  font-family: monospace;
+  font-size: 11px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--dd-texto-suave);
+}
+
+.destino-detalle__datos strong {
+  font-family: monospace;
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--dd-texto);
+  white-space: nowrap;
+}
+
+/* ----- Descripción + video (video arriba, texto abajo) ----- */
+.destino-detalle__descripcion {
+  display: grid;
+  grid-template-columns: 1fr;
+  overflow: hidden;
+}
+
+.destino-detalle__texto {
+  padding: 32px 36px 36px;
+}
+
+.destino-detalle__texto h2 {
+  margin: 0 0 20px;
+  font-size: 30px;
+  line-height: 1.2;
+  color: white;
+}
+
+.destino-detalle__texto p {
+  margin: 0;
+  line-height: 1.8;
+  color: var(--dd-texto-suave);
+}
+
+.destino-detalle__video {
+  order: -1;
+  position: relative;
+  aspect-ratio: 16 / 9;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background:
+    radial-gradient(circle at center, rgba(109, 93, 252, 0.35), transparent 70%),
+    linear-gradient(135deg, #1f2a44, #0f1115);
+}
+
+.destino-detalle__play {
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(6px);
+  color: white;
+  font-size: 22px;
+  cursor: pointer;
+  transition: transform 0.2s, background 0.2s;
+}
+
+.destino-detalle__play:hover {
+  transform: scale(1.1);
+  background: var(--dd-acento);
+}
+
+.destino-detalle__duracion {
+  position: absolute;
+  right: 16px;
+  bottom: 16px;
+  padding: 4px 12px;
+  border-radius: 8px;
+  background: rgba(0, 0, 0, 0.7);
+  font-family: monospace;
+  font-size: 13px;
+}
+
+/* ----- Progreso de ruta ----- */
+.destino-detalle__ruta {
+  padding: 28px 32px;
+}
+
+.destino-detalle__ruta-encabezado,
+.destino-detalle__ruta-pie {
+  display: flex;
+  justify-content: space-between;
+  font-family: monospace;
+}
+
+.destino-detalle__ruta-encabezado span:last-child {
+  color: #8fa0ff;
+}
+
+.destino-detalle__ruta-pie {
+  font-size: 13px;
+  color: var(--dd-texto-suave);
+}
+
+.destino-detalle__barra {
+  height: 8px;
+  margin: 20px 0;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.08);
+  overflow: hidden;
+}
+
+.destino-detalle__barra-progreso {
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to right, var(--dd-violeta), var(--dd-acento));
+  box-shadow: 0 0 16px rgba(255, 10, 84, 0.6);
+}
+
+/* ----- Columna lateral ----- */
+.destino-detalle__sabias {
+  padding: 28px;
+  border-top: 3px solid var(--dd-acento);
+  background:
+    linear-gradient(to bottom, rgba(255, 10, 84, 0.08), transparent 60%),
+    var(--dd-tarjeta);
+}
+
+.destino-detalle__sabias h3 {
+  margin: 0 0 14px;
+  font-family: monospace;
+  font-size: 15px;
+  color: var(--dd-acento);
+}
+
+.destino-detalle__sabias p {
+  margin: 0;
+  line-height: 1.7;
+}
+
+.destino-detalle__puntos {
+  padding: 28px;
+}
+
+.destino-detalle__puntos h3 {
+  margin: 0 0 20px;
+  font-family: monospace;
+  font-size: 15px;
+}
+
+.destino-detalle__puntos ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* Cada punto de interés con una rayita de color a la izquierda */
+.destino-detalle__puntos li {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding-left: 14px;
+  border-left: 2px solid var(--dd-violeta);
+}
+
+.destino-detalle__puntos li span {
+  font-size: 14px;
+  line-height: 1.5;
+  color: var(--dd-texto-suave);
+}
+
+/* ----- Botones ----- */
+.destino-detalle__boton {
+  display: block;
+  padding: 18px 24px;
+  border-radius: 999px;
+  text-align: center;
+  font-family: monospace;
+  font-size: 15px;
+  font-weight: bold;
+  text-decoration: none;
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s, background 0.2s;
+}
+
+.destino-detalle__boton:hover {
+  transform: translateY(-2px);
+}
+
+.destino-detalle__boton--principal {
+  background: var(--dd-acento);
+  color: white;
+  border: none;
+  box-shadow: 0 8px 24px rgba(255, 10, 84, 0.35);
+}
+
+.destino-detalle__boton--principal:hover {
+  box-shadow: 0 12px 32px rgba(255, 10, 84, 0.55);
+}
+
+.destino-detalle__boton--secundario {
+  background: transparent;
+  color: var(--dd-texto);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+}
+
+.destino-detalle__boton--secundario:hover {
+  background: rgba(255, 255, 255, 0.06);
+}
+
+/* Mensaje de destino sin información */
+.destino-detalle__pendiente {
+  padding: 24px 64px;
+  color: var(--dd-texto-suave);
+}
+
+/* ----- Pantallas chicas ----- */
+@media (max-width: 1100px) {
+  .destino-detalle__contenido {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .destino-detalle__lateral {
+    position: static;
+  }
+
+  .destino-detalle__datos {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px 0;
+  }
+
+  .destino-detalle__datos div:nth-child(3) {
+    padding-left: 0;
+    border-left: none;
+  }
+
+  .destino-detalle__hero,
+  .destino-detalle__contenido {
+    padding-left: 32px;
+    padding-right: 32px;
+  }
+
+  .destino-detalle__hero > .destino-detalle__volver {
+    left: 32px;
+  }
+
+  .destino-detalle__titulo {
+    font-size: 48px;
+  }
+}
+.jugar {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  background: #111419;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.jugar .jugar__volver {
+  position: absolute;
+  top: 16px;
+  left: 16px;
+  width: auto;
+  margin: 0;
+}
+.jugar__fin {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(16, 20, 21, 0.85);
+  z-index: 10;
+  overflow: hidden;
+  animation: fin-aparece 0.4s ease-out;
+}
+
+.jugar__tarjeta {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+  padding: 40px 48px;
+  background: #1b0088;
+  color: #fff;
+  border-radius: 20px;
+  text-align: center;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+  animation: tarjeta-pop 0.6s cubic-bezier(0.2, 1.4, 0.4, 1);
+}
+
+.jugar__sello {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 13px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #7ec8f2;
+}
+
+.jugar__felicitacion {
+  font-family: 'Sora', sans-serif;
+  font-size: 40px;
+  margin: 0;
+}
+
+.jugar__lugar {
+  font-family: 'Hanken Grotesk', sans-serif;
+  font-size: 20px;
+  margin: 0;
+}
+
+.jugar__stats {
+  display: flex;
+  gap: 40px;
+  margin: 6px 0;
+}
+
+.jugar__stats div {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.jugar__stats span {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 12px;
+  text-transform: uppercase;
+  opacity: 0.7;
+}
+
+.jugar__stats strong {
+  font-family: 'Sora', sans-serif;
+  font-size: 28px;
+}
+
+.jugar__desbloqueo {
+  font-family: 'Hanken Grotesk', sans-serif;
+  font-size: 16px;
+  margin: 0;
+  padding: 8px 16px;
+  background: rgba(255, 255, 255, 0.12);
+  border-radius: 999px;
+}
+
+/* Confeti: cada papelito cae desde arriba girando */
+.confeti {
+  position: absolute;
+  top: -20px;
+  width: 10px;
+  height: 16px;
+  border-radius: 2px;
+  opacity: 0.9;
+  animation-name: confeti-cae;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}
+
+@keyframes confeti-cae {
+  to {
+    transform: translateY(110vh) rotate(720deg);
+  }
+}
+
+@keyframes tarjeta-pop {
+  from {
+    transform: scale(0.6);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes fin-aparece {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}

@@ -1,0 +1,90 @@
+/* Tarjeta de dificultad del detalle de destino.
+   Usa las variables --dd-* que ya define .destino-detalle en App.css. */
+
+.destino-detalle__dificultad {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 32px;
+  padding: 28px 32px;
+  background: var(--dd-tarjeta);
+  border: 1px solid var(--dd-borde);
+  border-radius: 20px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.25);
+}
+
+.dificultad__titulo {
+  margin: 0 0 12px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--dd-texto-suave);
+}
+
+.dificultad__estrellas {
+  margin-bottom: 8px;
+  font-size: 26px;
+  letter-spacing: 4px;
+  color: var(--dd-acento);
+}
+
+.dificultad__estrella--vacia {
+  color: rgba(255, 255, 255, 0.18);
+}
+
+.dificultad__desafio {
+  margin: 0 0 8px;
+  font-family: 'Sora', system-ui, sans-serif;
+  font-size: 22px;
+  color: white;
+}
+
+.dificultad__descripcion {
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.6;
+  color: var(--dd-texto-suave);
+}
+
+.dificultad__medidores {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 14px;
+}
+
+.dificultad__medidor {
+  display: grid;
+  grid-template-columns: 130px minmax(0, 1fr);
+  align-items: center;
+  gap: 12px;
+}
+
+.dificultad__medidor span {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 12px;
+  color: var(--dd-texto-suave);
+}
+
+.dificultad__segmentos {
+  display: flex;
+  gap: 6px;
+}
+
+.dificultad__segmento {
+  flex: 1;
+  height: 8px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.dificultad__segmento--lleno {
+  background: linear-gradient(to right, var(--dd-violeta), var(--dd-acento));
+  box-shadow: 0 0 10px rgba(255, 10, 84, 0.4);
+}
+
+@media (max-width: 700px) {
+  .destino-detalle__dificultad {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
