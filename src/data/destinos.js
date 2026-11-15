@@ -5,7 +5,7 @@ const destinosData = [
     imagen: '/imagenes/argentina.jpg',
     fondoJuego: '/imagenes/fondo-argentina.jpg',
     bloqueado: false,
-    meta: 150,
+    meta: 100,
     // Dificultad del vuelo (la leen el juego y la pantalla de detalle)
     dificultad: {
       nivel: 1, // estrellas, de 1 a 5
@@ -46,7 +46,7 @@ const destinosData = [
     imagen: '/imagenes/brasil.jpeg',
     fondoJuego: '/imagenes/fondo-brasil.jpg',
     bloqueado: false,
-    meta: 250,
+    meta: 200,
     dificultad: {
       nivel: 2,
       desafio: 'Viento costero',
@@ -86,7 +86,7 @@ const destinosData = [
     imagen: '/imagenes/mexico.jpeg',
     fondoJuego: '/imagenes/fondo-mexico.jpg',
     bloqueado: false,
-    meta: 350,
+    meta: 250,
     dificultad: {
       nivel: 3,
       desafio: 'Aire de altura',
@@ -126,7 +126,7 @@ const destinosData = [
     imagen: '/imagenes/espana.jpg',
     fondoJuego: '/imagenes/fondo-espana.jpg',
     bloqueado: true,
-    meta: 450,
+    meta: 300,
     dificultad: {
       nivel: 4,
       desafio: 'Turbulencia',
@@ -166,7 +166,7 @@ const destinosData = [
     imagen: '/imagenes/japon.webp',
     fondoJuego: '/imagenes/fondo-tokio.jpg',
     bloqueado: true,
-    meta: 600,
+    meta: 400,
     dificultad: {
       nivel: 5,
       desafio: 'Niebla y turbulencia',

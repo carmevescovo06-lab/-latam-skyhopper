@@ -14,7 +14,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  background: url('imagenes/fondo-avion.png') center/cover no-repeat;
+  background: url('/imagenes/login.png') center/cover no-repeat;
 }
 
 .login__card {

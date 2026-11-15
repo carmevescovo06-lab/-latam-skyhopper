@@ -1,0 +1,311 @@
+/* =================================
+   PANTALLA DE BIENVENIDA
+================================= */
+
+.bienvenida {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  height: 100vh;
+  overflow: hidden;
+  background: #10131b;
+  color: white;
+  font-family: "Sora", sans-serif;
+  box-sizing: border-box;
+}
+
+/* =================================
+   FONDO
+================================= */
+
+.bienvenida-fondo {
+  position: absolute;
+  inset: 0;
+
+  background-image: url("/imagenes/paisaje-bienvenida.jpeg");
+  background-size: cover;
+  background-position: center;
+
+  transform: scale(1.02);
+
+  animation: movimientoFondo 24s ease-in-out infinite alternate;
+}
+
+@keyframes movimientoFondo {
+  from {
+    transform: scale(1.02);
+  }
+
+  to {
+    transform: scale(1.09);
+  }
+}
+
+.bienvenida-overlay {
+  position: absolute;
+  inset: 0;
+
+  background:
+    linear-gradient(
+      90deg,
+      rgba(10, 13, 22, 0.94) 0%,
+      rgba(10, 13, 22, 0.76) 45%,
+      rgba(10, 13, 22, 0.30) 100%
+    ),
+    linear-gradient(
+      0deg,
+      #10131b 0%,
+      rgba(16, 19, 27, 0.1) 65%
+    );
+}
+
+/* =================================
+   CONTENIDO GENERAL
+================================= */
+
+.bienvenida-contenido {
+  position: relative;
+  z-index: 2;
+
+  width: 100%;
+  max-width: 1450px;
+  height: 100%;
+  min-height: 100vh;
+
+  margin: 0 auto;
+  padding: 40px 7% 22px;
+
+  display: flex;
+  flex-direction: column;
+
+  box-sizing: border-box;
+}
+
+/* =================================
+   ETIQUETA SUPERIOR
+================================= */
+
+.bienvenida-etiqueta {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+
+  color: #d1d2dc;
+
+  font-size: 12px;
+  letter-spacing: 2px;
+  font-weight: 600;
+
+  flex-shrink: 0;
+}
+
+.punto-magenta {
+  width: 9px;
+  height: 9px;
+
+  border-radius: 50%;
+
+  background: #eb0045;
+  box-shadow: 0 0 12px #eb0045;
+
+  flex-shrink: 0;
+}
+
+/* =================================
+   CONTENIDO PRINCIPAL
+================================= */
+
+.bienvenida-principal {
+  flex: 1;
+
+  display: flex;
+  align-items: center;
+
+  width: 100%;
+
+  margin-top: 20px;
+}
+
+/* =================================
+   TÍTULO
+================================= */
+
+.bienvenida-titulo {
+  width: 100%;
+  max-width: 750px;
+}
+
+.bienvenida-titulo h1 {
+  font-size: clamp(55px, 6.2vw, 90px);
+
+  line-height: 0.98;
+  letter-spacing: -5px;
+
+  font-weight: 800;
+
+  margin: 0;
+}
+
+.bienvenida-titulo h1 span {
+  color: #eb0045;
+}
+
+/* =================================
+   DESCRIPCIÓN
+================================= */
+
+.bienvenida-descripcion {
+  max-width: 490px;
+
+  color: #d0d1db;
+
+  font-size: 16px;
+  line-height: 1.8;
+
+  margin-top: 28px;
+}
+
+/* =================================
+   BOTÓN
+================================= */
+
+.boton-comenzar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  gap: 45px;
+
+  margin-top: 32px;
+
+  padding: 19px 25px;
+
+  min-width: 300px;
+
+  border: none;
+  border-radius: 5px;
+
+  background: #eb0045;
+  color: white;
+
+  font-family: inherit;
+
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 1.5px;
+
+  cursor: pointer;
+
+  transition: 0.3s ease;
+}
+
+.boton-comenzar span {
+  font-size: 22px;
+
+  transition: transform 0.3s ease;
+}
+
+.boton-comenzar:hover {
+  background: #ff245f;
+
+  transform: translateY(-3px);
+
+  box-shadow: 0 12px 30px rgba(235, 0, 69, 0.25);
+}
+
+.boton-comenzar:hover span {
+  transform: translateX(5px);
+}
+
+/* =================================
+   FOOTER
+================================= */
+
+.bienvenida-footer {
+  display: flex;
+
+  justify-content: space-between;
+  align-items: center;
+
+  margin-top: 20px;
+
+  padding-top: 17px;
+
+  border-top: 1px solid rgba(255, 255, 255, 0.12);
+
+  color: #858794;
+
+  font-size: 10px;
+  letter-spacing: 2px;
+  font-weight: 600;
+
+  flex-shrink: 0;
+}
+
+.bienvenida-footer span:first-child {
+  color: white;
+}
+
+/* =================================
+   TABLETS
+================================= */
+
+@media (max-width: 900px) {
+
+  .bienvenida-titulo h1 {
+    font-size: 65px;
+    letter-spacing: -3px;
+  }
+
+}
+
+/* =================================
+   CELULARES
+================================= */
+
+@media (max-width: 600px) {
+
+  .bienvenida {
+    height: auto;
+    min-height: 100vh;
+    overflow-y: auto;
+  }
+
+  .bienvenida-contenido {
+    min-height: 100vh;
+    height: auto;
+
+    padding: 35px 6% 20px;
+  }
+
+  .bienvenida-principal {
+    margin-top: 45px;
+    margin-bottom: 45px;
+  }
+
+  .bienvenida-titulo h1 {
+    font-size: clamp(46px, 10vw, 60px);
+    letter-spacing: -3px;
+  }
+
+  .bienvenida-descripcion {
+    font-size: 14px;
+  }
+
+  .boton-comenzar {
+    width: 100%;
+    min-width: 0;
+  }
+
+  .bienvenida-etiqueta {
+    font-size: 9px;
+    letter-spacing: 1px;
+  }
+
+  .bienvenida-footer {
+    gap: 12px;
+    flex-wrap: wrap;
+    font-size: 9px;
+  }
+
+}
