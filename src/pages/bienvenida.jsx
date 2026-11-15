@@ -1,5 +1,5 @@
 import React from "react";
-import "./Bienvenida.css";
+import "./bienvenida.css";
 
 export default function Bienvenida({ onStart }) {
   return (
